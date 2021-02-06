@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Update()
+    public void Update()
     {
         //Rotate
         Plane playerPlane = new Plane(Vector3.up, transform.position);
@@ -58,30 +58,30 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
 
+
         //Shooting
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
-        
-        }
-        void Shoot() 
-        {
-            bulletSpawned = Instantiate(bullet.transform, bulletSpawn.transform.position, Quaternion.identity );
-            bulletSpawned.rotation = bulletSpawn.transform.rotation;
-
-
-
-
-
-
 
         }
-        if(hp <= 0)
+        if (hp <= 0)
             Die();
-        
-        
-    }
 
+    }
+    public void Shoot()
+
+    {
+        bulletSpawned = Instantiate(bullet.transform, bulletSpawn.transform.position, Quaternion.identity);
+        bulletSpawned.rotation = bulletSpawn.transform.rotation;
+
+
+
+
+
+
+
+    }
 
     public void Die()
     {
