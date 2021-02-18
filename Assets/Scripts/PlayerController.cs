@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Joystick joystik;
     public float moveSpeed;
 
-    public GameObject camera;
     public GameObject bulletSpawn;
     public float cooldown;
     public float points;
     public float hp;
     public float maxHp;
+    public GameObject Enemy;
 
     public GameObject playerObj;
     public GameObject bullet;
 
     private Rigidbody rb;
     private Transform bulletSpawned;
-
-
-    
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,46 +26,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-    public void Update()
+    // Update is called once per frame
+    void Update()
     {
-        //Rotate
-        Plane playerPlane = new Plane(Vector3.up, transform.position);
-        Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
-        float hitDist = 0.0f;
-        if (playerPlane.Raycast(ray, out hitDist))
-        {
+        this.transform.LookAt(Enemy.transform);
+        var rigidbody = GetComponent<Rigidbody>();
 
-            Vector3 targetPoint = ray.GetPoint(hitDist);
-            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-            targetRotation.x = 0;
-            targetRotation.z = 0;
-            playerObj.transform.rotation = Quaternion.Slerp(playerObj.transform.rotation, targetRotation, 7f * Time.deltaTime);
-
-
-        }
-        //Move
-        if (Input.GetKey(KeyCode.W))
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.A))
-            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.S))
-            transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.D))
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-
-
-
-        //Shooting
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-
-        }
+        rigidbody.velocity = new Vector3(joystik.Horizontal * 10f,rigidbody.velocity.y,joystik.Vertical * 10f);
         if (hp <= 0)
             Die();
 
     }
+
     public void Shoot()
 
     {
@@ -87,12 +56,6 @@ public class PlayerController : MonoBehaviour
     {
 
         Destroy(this.gameObject);
-    
+
     }
-
-
-
-
-
-
 }
