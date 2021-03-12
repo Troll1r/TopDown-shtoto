@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public Joystick joystik;
+    public Joystick joystikMove;
+    public Joystick joystikRotation;
     public float moveSpeed;
+    public float turnSpeed;
+    public Image timeBar;
+    public float maxTime;
+    public float timeLeft;
+    public Slider slider;
 
     public GameObject bulletSpawn;
     public float cooldown;
@@ -21,20 +28,29 @@ public class PlayerController : MonoBehaviour
     private Transform bulletSpawned;
     void Start()
     {
+        timeLeft = maxTime;
         rb = GetComponent<Rigidbody>();
         hp = maxHp;
-
+        SetMaxTime(maxTime);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        this.transform.LookAt(Enemy.transform);
-        var rigidbody = GetComponent<Rigidbody>();
-
-        rigidbody.velocity = new Vector3(joystik.Horizontal * 10f,rigidbody.velocity.y,joystik.Vertical * 10f);
         if (hp <= 0)
             Die();
+        var rigidbody = GetComponent<Rigidbody>();
+        rigidbody.velocity = new Vector3(joystikMove.Horizontal * 10f, rigidbody.velocity.y, joystikMove.Vertical * 10f);
+        if (joystikRotation.Direction.magnitude > 0)
+            transform.LookAt(Vector3.forward * joystikRotation.Vertical * turnSpeed + Vector3.right * joystikRotation.Horizontal * turnSpeed);
+        Timer();
+        SetHealth(timeLeft);
+
+
+
+
+
+
 
     }
 
@@ -58,4 +74,31 @@ public class PlayerController : MonoBehaviour
         Destroy(this.gameObject);
 
     }
+    public void Timer()
+    {
+            if (timeLeft >= 0)
+            {
+            timeLeft -= Time.deltaTime;
+            
+            if (timeLeft <= 0)
+            {
+                timeLeft = maxTime;
+                Shoot();
+                
+            }
+            return;
+        }
+    }
+    public void SetMaxTime(float time) 
+    {
+        slider.maxValue = time;
+        slider.value = time;
+    
+    }
+    public void SetHealth(float time) 
+    {
+        slider.value = time;
+        
+    }
+
 }

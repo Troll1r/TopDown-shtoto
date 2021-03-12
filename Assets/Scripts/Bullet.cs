@@ -8,22 +8,27 @@ public class Bullet : MonoBehaviour
     public float maxDist;
     public float damage;
 
+
     private GameObject triggeringEnemy;
     private GameObject Player;
+    private GameObject Enemy;
 
     private void Start()
     {
+        
         Player = GameObject.FindWithTag("Player");
+        Enemy = GameObject.FindWithTag("Enemy");
     }
 
     void Update()
     {
+        
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         maxDist += 1 * Time.deltaTime;
 
         if (maxDist >=5) 
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         
         }
 
@@ -36,17 +41,16 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Enemy") 
         {
-            triggeringEnemy = other.gameObject;
-            triggeringEnemy.GetComponent<Enemy>().health -= damage;
-            Destroy(this.gameObject);
+            Enemy.GetComponent<PlayerController>().hp -= damage;
+            Destroy(gameObject);
         }
 
         if (other.tag == "Player")
         {
 
-            Player.GetComponent<PlayerController>().hp -= 20;
-        
-        
+            Player.GetComponent<PlayerController>().hp -= damage;
+            Destroy(gameObject);
+
         }
     }
 }
