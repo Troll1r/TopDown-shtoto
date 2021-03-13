@@ -44,9 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69b67c7a42882144ac67d46699023e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 1
   speed: 20
   maxDist: 0
   damage: 10000
+  bullet: {fileID: 5153424093809936446}
 --- !u!1001 &8494398230399322611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.016
       objectReference: {fileID: 0}
@@ -81,6 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7070866
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.003850478
       objectReference: {fileID: 0}
@@ -93,16 +107,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.7070963
-      objectReference: {fileID: 0}
-    - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7070866
-      objectReference: {fileID: 0}
-    - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
         type: 3}

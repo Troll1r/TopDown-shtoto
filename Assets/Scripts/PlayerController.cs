@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         if (hp <= 0)
             Die();
         var rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = new Vector3(joystikMove.Horizontal * 10f, rigidbody.velocity.y, joystikMove.Vertical * 10f);
+        rigidbody.velocity = new Vector3(joystikMove.Horizontal * moveSpeed, rigidbody.velocity.y, joystikMove.Vertical * moveSpeed);
         if (joystikRotation.Direction.magnitude > 0)
             transform.LookAt(Vector3.forward * joystikRotation.Vertical * turnSpeed + Vector3.right * joystikRotation.Horizontal * turnSpeed);
         Timer();
