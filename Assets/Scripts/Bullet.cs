@@ -20,7 +20,8 @@ public class Bullet : MonoBehaviour
     {
 
         Player = GameObject.FindWithTag("Player");
-        Enemy = GameObject.FindWithTag("Enemy");
+        Enemy = GameObject.FindWithTag("Enemy"); 
+
     }
 
     void Update()
