@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
     {
         if (maxDist >= 5)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
 
         }
 
