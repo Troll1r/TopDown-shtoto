@@ -45,13 +45,6 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(Vector3.forward * joystikRotation.Vertical * turnSpeed + Vector3.right * joystikRotation.Horizontal * turnSpeed);
         Timer();
         SetHealth(timeLeft);
-
-
-
-
-
-
-
     }
 
     public void Shoot()
@@ -60,12 +53,7 @@ public class PlayerController : MonoBehaviour
         bulletSpawned = Instantiate(bullet.transform, bulletSpawn.transform.position, Quaternion.identity);
         bulletSpawned.rotation = bulletSpawn.transform.rotation;
 
-
-
-
-
-
-
+        bulletSpawned.GetComponent<Bullet>().sender = this.gameObject;
     }
 
     public void Die()
@@ -97,8 +85,7 @@ public class PlayerController : MonoBehaviour
     }
     public void SetHealth(float time) 
     {
-        slider.value = time;
-        
+        slider.value = time; 
     }
 
 }

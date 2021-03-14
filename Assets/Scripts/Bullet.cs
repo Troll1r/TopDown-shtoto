@@ -12,27 +12,14 @@ public class Bullet : MonoBehaviour
     public Transform bullet;
 
     private float rotSpeed;
-    private GameObject triggeringEnemy;
-    private GameObject Player;
-    private GameObject Enemy;
 
-    private void Start()
-    {
+    public GameObject sender;
 
-        Player = GameObject.FindWithTag("Player");
-        Enemy = GameObject.FindWithTag("Enemy"); 
-
-    }
 
     void Update()
     {
-
-
-        bulletMove();
+        Move();
         DestroyBullet();
-
-
-
     }
     public void DestroyBullet()
     {
@@ -43,7 +30,7 @@ public class Bullet : MonoBehaviour
         }
 
     }
-    public void bulletMove() 
+    public void Move() 
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
@@ -63,18 +50,7 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy") 
-        {
-            Enemy.GetComponent<PlayerController>().hp -= damage;
-            Destroy(Enemy);
-        }
-
-        if (other.tag == "Player")
-        {
-
-            Player.GetComponent<PlayerController>().hp -= damage;
-            Destroy(Player);
-
-        }
+            if (other.gameObject != this.sender && other.GetComponent<PlayerController>())
+                other.GetComponent<PlayerController>().hp -= damage;
     }
 }

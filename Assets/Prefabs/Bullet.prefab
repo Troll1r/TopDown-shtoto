@@ -128,9 +128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69b67c7a42882144ac67d46699023e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
   speed: 20
   maxDist: 0
-  damage: 10000
+  damage: 10
+  bullet: {fileID: 0}
+  sender: {fileID: 0}
 --- !u!95 &1216768719085177640
 Animator:
   serializedVersion: 3

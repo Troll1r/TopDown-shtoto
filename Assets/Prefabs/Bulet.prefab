@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5153424093809936446}
   - component: {fileID: 6908450655359510981}
+  - component: {fileID: 5295374234664528259}
   m_Layer: 0
   m_Name: Bulet
   m_TagString: Untagged
@@ -49,8 +50,23 @@ MonoBehaviour:
     m_Bits: 1
   speed: 20
   maxDist: 0
-  damage: 10000
+  damage: 10
   bullet: {fileID: 5153424093809936446}
+  sender: {fileID: 0}
+--- !u!136 &5295374234664528259
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6548701574954121871}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8494398230399322611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,17 +92,17 @@ PrefabInstance:
     - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.016
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.039390326
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5518767637918148053, guid: f67094c7d76e01845affafca760e1342,
         type: 3}
@@ -123,7 +139,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3850928303804807948, guid: f67094c7d76e01845affafca760e1342, type: 3}
+    - {fileID: 8421538926882364520, guid: f67094c7d76e01845affafca760e1342, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f67094c7d76e01845affafca760e1342, type: 3}
 --- !u!4 &4140131604332866598 stripped
 Transform:
