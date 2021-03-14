@@ -51,7 +51,10 @@ MonoBehaviour:
   speed: 20
   maxDist: 0
   damage: 10
+  maxTime: 1.5
+  timeLeft: 0
   bullet: {fileID: 5153424093809936446}
+  bulet: {fileID: 6548701574954121871}
   sender: {fileID: 0}
 --- !u!136 &5295374234664528259
 CapsuleCollider:

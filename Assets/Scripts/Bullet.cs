@@ -9,12 +9,20 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float maxDist;
     public float damage;
+    public float maxTime;
+    public float timeLeft;
+
     public Transform bullet;
 
     private float rotSpeed;
 
+    public GameObject bulet;
     public GameObject sender;
 
+    public void Start()
+    {
+        timeLeft = maxTime;
+    }
 
     void Update()
     {
@@ -23,10 +31,17 @@ public class Bullet : MonoBehaviour
     }
     public void DestroyBullet()
     {
-        if (maxDist >= 5)
+        if (timeLeft >= 0)
         {
-            Destroy(this.gameObject);
+            timeLeft -= Time.deltaTime;
 
+            if (timeLeft <= 0)
+            {
+                timeLeft = maxTime;
+                Destroy(bulet);
+
+            }
+            return;
         }
 
     }
