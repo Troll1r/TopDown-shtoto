@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class PlayerController : MonoBehaviour
     public float maxTime;
     public float timeLeft;
     public Slider slider;
+    public int Score;
+    public GameObject ScoreText;
+    public GameObject ScoreScreen;
+    public float timel;
+    public float mtime;
 
     public GameObject bulletSpawn;
     public float cooldown;
@@ -58,8 +64,14 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-
+        Score++;
+        ScoreText.GetComponent<Text>().text = "Score:" + Score.ToString();
         Destroy(this.gameObject);
+        //SceneManager.LoadScene(1);
+
+
+
+
 
     }
     public void Timer()
@@ -77,6 +89,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
+
     public void SetMaxTime(float time) 
     {
         slider.maxValue = time;
