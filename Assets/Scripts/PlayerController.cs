@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         Score++;
         ScoreText.GetComponent<Text>().text = "Score:" + Score.ToString();
         Destroy(this.gameObject);
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
 
 
 
