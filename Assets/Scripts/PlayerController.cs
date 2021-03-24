@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerController : MonoBehaviour
 {
+
     public Joystick joystikMove;
     public Joystick joystikRotation;
     public float moveSpeed;
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public GameObject ScoreScreen;
     public float timel;
     public float mtime;
+    int countcoins;
+    public Text coinsText;
 
     public GameObject bulletSpawn;
     public float cooldown;
@@ -100,5 +104,14 @@ public class PlayerController : MonoBehaviour
     {
         slider.value = time; 
     }
-
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Coin")
+        {
+            Destroy(other.gameObject);
+            countcoins++;
+            coinsText.text = "монеток " + countcoins;
+            PlayerPrefs.GetInt("Coins", countcoins);
+        }
+    }
 }
